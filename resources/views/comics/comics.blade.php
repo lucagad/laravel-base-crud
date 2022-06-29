@@ -4,7 +4,7 @@
   <div class="container my-4">
     <h1>Comics List </h1>
     
-    <table class="table">
+    <table class="table my-5">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -17,7 +17,7 @@
         @foreach ($comics as $comic )
 
         <tr>
-          <th scope="row">{{ $comic }}</th>
+          <th scope="row">{{ $comic->id }}</th>
           <td>{{ $comic->title }}</td>
           <td>{{ $comic->type }}</td>
           <td>
