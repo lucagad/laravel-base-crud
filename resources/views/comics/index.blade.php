@@ -7,11 +7,18 @@
       <h1 class="d-inline">Comics List </h1>
       <a class="btn btn-success" href="{{ route('comics.create') }}">ADD</a>
     </section>
+
+    @if(session('comic_deleted'))
+      <div class=" my-2 alert alert-success" role="alert">
+        {{ session('comic_deleted') }}
+      </div>
+    @endif
     
     <table class="table my-5">
       <thead>
         <tr>
           <th scope="col">ID</th>
+          <th scope="col">Thumbnail</th>
           <th scope="col">Title</th>
           <th scope="col">Type</th>
           <th scope="col">More</th>
@@ -21,7 +28,8 @@
         @foreach ($comics as $comic )
 
         <tr>
-          <th scope="row">{{ $comic->id }}</th>
+          <td>{{ $comic->id }}</td>
+          <td> <img class="w-25" src="{{$comic->image}}" alt="{{$comic->title}}"></td>
           <td>{{ $comic->title }}</td>
           <td>{{ $comic->type }}</td>
           <td>

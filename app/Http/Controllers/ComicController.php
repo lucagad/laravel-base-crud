@@ -111,7 +111,7 @@ class ComicController extends Controller
     {
         $comic->delete();
 
-        return redirect()->route('comics.index');
+        return redirect()->route('comics.index')->with('comic_deleted', "The Comic # $comic->title #  was successfully deleted");
     }
 
     private function createSlug ($string) {
@@ -127,7 +127,7 @@ class ComicController extends Controller
             $control_slug = Comic::where('slug', $slug)->first();
 
         }
-        
+
         return $slug;
     }
 }
