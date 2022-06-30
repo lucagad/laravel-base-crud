@@ -2,7 +2,11 @@
 
 @section('content')
   <div class="container my-4">
-    <h1>Comics List </h1>
+
+    <section class="d-flex justify-content-between align-items-center">
+      <h1 class="d-inline">Comics List </h1>
+      <a class="btn btn-success" href="{{ route('comics.create') }}">ADD</a>
+    </section>
     
     <table class="table my-5">
       <thead>
@@ -21,8 +25,17 @@
           <td>{{ $comic->title }}</td>
           <td>{{ $comic->type }}</td>
           <td>
-            <a class="btn btn-success" href="{{ route('comics.show', $comic->id ) }}">SHOW</a>
-            <a class="btn btn-dark" href="">EDIT</a>
+            <a class="btn btn-primary" href="{{ route('comics.show', $comic->id ) }}">SHOW</a>
+            <a class="btn btn-secondary" href="">EDIT</a>
+
+            <form class = "d-inline" onsubmit = ""
+                  action = "{{ route('comics.destroy', $comic) }}" method="POST">
+              @csrf
+              @method ('DELETE')
+
+              <button class="btn btn-danger">DELETE</button>
+            </form>
+
           </td>
         </tr>
           
