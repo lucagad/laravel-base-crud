@@ -4,7 +4,12 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-8 offset-2">
-                <h2 class="mb-3">Add a new comic</h2>
+
+                <section class = "d-flex justify-content-between align-items-center">
+                    <h2 class="mb-3 d-inline">Add a new comic</h2>
+                    <a class="btn btn-primary" href="{{ route('comics.index') }}">BACK</a>
+                </section>
+
                 <form action="{{ route('comics.store')}}" method="POST">
                     @csrf
                     <div class="mb-3">
@@ -20,7 +25,7 @@
                         <input type="text" id="image" name="image" class="form-control" placeholder="URL Image" >
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-success">SAVE</button>
                 </form>
             </div>
         </div>

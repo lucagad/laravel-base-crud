@@ -70,7 +70,11 @@ class ComicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::find($id);
+        
+        if($comic){
+            return view('comics.edit', compact('comic'));
+        } else { abort(404, 'Comic not present in the database');}
     }
 
     /**
@@ -80,9 +84,21 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Comic $comic)
+    {   
+        $new_data = $request->all();
+        // dd($new_data);
+
+        if($comic->title != $new_data['title']){
+            $new_data['slug'] = $this->createSlug($new_data['title']);
+        }else{
+            $new_data['slug'] = $comic->slug;
+        }
+
+        $comic->update($new_data);
+
+        return redirect()->route('comics.show', $comic);
+
     }
 
     /**
@@ -99,14 +115,19 @@ class ComicController extends Controller
     }
 
     private function createSlug ($string) {
-        $slug = Str::slug($string,'');
+
+        $slug = Str::slug($string,'-');
         $control_slug = Comic::where('slug', $slug)->first();
         $i = 0;
+
         while($control_slug){
+
             $slug = Str::slug ($string , '-');
             $i++;
             $control_slug = Comic::where('slug', $slug)->first();
+
         }
+        
         return $slug;
     }
 }

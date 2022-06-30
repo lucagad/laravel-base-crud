@@ -25,8 +25,8 @@
           <td>{{ $comic->title }}</td>
           <td>{{ $comic->type }}</td>
           <td>
-            <a class="btn btn-primary" href="{{ route('comics.show', $comic->id ) }}">SHOW</a>
-            <a class="btn btn-secondary" href="">EDIT</a>
+            <a class="btn btn-primary" href="{{ route('comics.show', $comic) }}">SHOW</a>
+            <a class="btn btn-secondary" href="{{ route('comics.edit', $comic) }}">EDIT</a>
 
             <form class = "d-inline"
                   onsubmit = "return confirm('Do you confirm the deletion of the ## {{ $comic->title }} ## comic?')"
