@@ -28,7 +28,8 @@
             <a class="btn btn-primary" href="{{ route('comics.show', $comic->id ) }}">SHOW</a>
             <a class="btn btn-secondary" href="">EDIT</a>
 
-            <form class = "d-inline" onsubmit = ""
+            <form class = "d-inline"
+                  onsubmit = "return confirm('Do you confirm the deletion of the ## {{ $comic->title }} ## comic?')"
                   action = "{{ route('comics.destroy', $comic) }}" method="POST">
               @csrf
               @method ('DELETE')
