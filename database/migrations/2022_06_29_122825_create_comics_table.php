@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+Use Illuminate\Support\Str;
 
 class CreateComicsTable extends Migration
 {
@@ -16,8 +17,9 @@ class CreateComicsTable extends Migration
         Schema::create('comics', function (Blueprint $table) {
             $table->id();
             $table->string('title', 60);
-            $table->string('image');
+            $table->string('slug', 65);
             $table->string('type', 25);
+            $table->string('image');
             $table->timestamps();
         });
     }
