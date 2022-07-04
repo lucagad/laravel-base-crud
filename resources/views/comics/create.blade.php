@@ -19,22 +19,21 @@
                                 name="title" 
                                 class="form-control @error('title') is-invalid @enderror"
                                 placeholder="Comic Title"
-                                value=" {{ old ('title') }}"
-                                >
-                        @error('type')
-                            <p class="error-msg">{{$message}}</p>
+                                value="{{old('title')}}">
+                        @error('title')
+                            <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label for="type" class="form-label">Comic Type</label>
-                        <input type="text" 
+                        <input type="text"
                                 id="type" 
                                 name="type" 
                                 class="form-control @error('type') is-invalid @enderror"
                                 placeholder="Comic Type"
-                                value=" {{ old ('type') }}" >
+                                value="{{old('type')}}" >
                         @error('type')
-                            <p class="error-msg">{{$message}}</p>
+                            <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
@@ -44,9 +43,9 @@
                                 name="image" 
                                 class="form-control @error('image') is-invalid @enderror"
                                 placeholder="URL Image"
-                                value=" {{ old ('image') }}" >
+                                value="{{old('image')}}" >
                         @error('image')
-                            <p class="error-msg">{{$message}}</p>
+                            <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
 

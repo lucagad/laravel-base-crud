@@ -31,24 +31,36 @@
                         <input type="text" id="title"
                             value="{{$comic->title}}"
                             name="title" 
-                            class="form-control" 
-                            placeholder="Comic Title">
+                            class="form-control @error('title') is-invalid @enderror"
+                            placeholder="Comic Title"
+                            value="{{old('title',$comic->title)}}">
+                        @error('title')
+                            <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="type" class="form-label">Comic Type</label>
                         <input type="text" id="type" 
                             value="{{$comic->type}}"
                             name="type" 
-                            class="form-control" 
-                            placeholder="Comic Type" >
+                            class="form-control @error('type') is-invalid @enderror"
+                            placeholder="Comic Type"
+                            value="{{old('type',$comic->type)}}" >
+                        @error('type')
+                            <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">URL Image</label>
                         <input type="text" id="image" 
                             value="{{$comic->image}}"
                             name="image" 
-                            class="form-control" 
-                            placeholder="URL Image" >
+                            class="form-control @error('image') is-invalid @enderror"
+                            placeholder="URL Image"
+                            value="{{old('image',$comic->image)}}" >
+                        @error('image')
+                            <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
                     </div>
 
                     <button type="submit" class="btn btn-success">SAVE</button>
